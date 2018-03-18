@@ -16,6 +16,13 @@ else()
 endif()
 
 add_library(ngsocket
+	include/ngsocket/address.hpp
+	include/ngsocket/endpoint.hpp
+	include/ngsocket/incopiable.hpp
+	include/ngsocket/options.hpp
+	include/ngsocket/platform.hpp
+	include/ngsocket/resolver.hpp
+	include/ngsocket/socket.hpp
 	src/platform.cpp
 	src/socket_service.cpp
 	src/ipv4_address.cpp
@@ -43,6 +50,6 @@ install(DIRECTORY include/
 install(EXPORT ngsocket-targets
 		DESTINATION lib/ngsocket
 		COMPONENT cmake)
-install(FILES ngsocket-config.cmake ngsocket-config-version.cmake.in
+install(FILES ngsocket-config.cmake ngsocket-config-version.cmake
 		DESTINATION lib/ngsocket
 		COMPONENT cmake)
