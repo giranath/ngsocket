@@ -68,5 +68,22 @@ bool socket_acceptor::wait(uint64_t timeout) const {
 	return count > 0;
 }
 
+bool socket_acceptor::wait() {
+	int count = ::select(pimpl->max + 1, &pimpl->ready, nullptr, nullptr, nullptr);
+
+	return count > 0;
+}
+
+bool socket_acceptor::poll() {
+    timeval time;
+    time.tv_sec = 0;
+    time.tv_usec = 0;
+
+    pimpl->ready = pimpl->all;
+
+    int count = ::select(pimpl->max + 1, &pimpl->ready, nullptr, nullptr, &time);
+
+    return count > 0;
+}
 
 }

@@ -116,6 +116,10 @@ public:
 		return wait(d.count());
 	}
 
+	bool wait();
+
+    bool poll();
+
 };
 
 }
